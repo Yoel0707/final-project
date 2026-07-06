@@ -10,7 +10,7 @@ Gain enough levels to become strong, contiously train to uncover new powers, and
 
 ## How to compile and run
 
-There will be a file called "game" and you run the code using the basic three Wall, Werror, and Wpedantic 
+There will be a file called "game" and you run the code using the basic three Wall, Werror, and Wpedantic.
 
 ## How to play
 

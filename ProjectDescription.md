@@ -21,7 +21,7 @@ The way time works is that you will have a set number of days in order to prepar
 
 ## EC 
 
-I plan to implement the shortest path recommendation system. 
+I plan to implement the shortest path recommendation system for extra credit. 
 
 ## Tradeoff System 
 
