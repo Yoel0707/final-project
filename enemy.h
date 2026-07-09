@@ -1,9 +1,9 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
+#include "maincharacter.h"
 
-
-class Enemy : public Character {
+class Enemy : public MainCharacter {
 
 private: 
 int attackPower; 
@@ -14,8 +14,6 @@ Enemy(string enemyName);
 int getAttackPower();
 
 void attack(); 
-
-void takeDamage(int damage); 
 
 };
 

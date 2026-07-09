@@ -1,11 +1,10 @@
-#include "Enemy.h"
+#include "enemy.h"
 #include <iostream>
 
 using namespace std; 
 
 Enemy::Enemy(string enemyName) 
-: Character(enemyName) {
-    health = 80; 
+: MainCharacter(enemyName, 80) {
     attackPower = 20; 
 }
 
@@ -14,5 +13,6 @@ int Enemy::getAttackPower() {
 }
 
 void Enemy::attack() {
-    cout << getName() << " attacks with majestical power " << attackPower << endl; 
+    cout << name << " attacks with majestical power " << attackPower << endl;
+    
 }

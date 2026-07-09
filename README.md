@@ -2,7 +2,7 @@
 
 ## Theme
 
-Fantasy 
+This game encompasses a fantasy where the player will play as a hero trying to defeat an evil sorcerer who threatens the existence of everyone on the world. While playing the adventure, the platyer will find new lands to explore, battle enemies, collect items, and get all the necesitites required to defeat the boss. 
 
 ## Goal
 

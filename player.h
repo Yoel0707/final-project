@@ -17,7 +17,7 @@ public:
     string getName();
     int gethealth();
     int getAttackPower();
-
+void attack(); 
     void takeDamage(int damage);
 };
 

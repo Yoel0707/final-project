@@ -7,25 +7,25 @@ using namespace std;
 
 int main() {
 
-    Player player("Shrek", 100, 50);
-    Enemy sorcerer("Odin", 150, 20);
+Player player("Shrek");
+Enemy sorcerer("Odin");
 
 
-    int choice = 0;
+int choice = 0;
 
 
-    while(choice != 3) {
+while(choice != 3) {
 
-        cout << "=== Fantasy Adventure ===";
-        cout << "1. View Player";
-        cout << "2. Attack Enemy";
-        cout << "3. Quit";
+cout << "=== The Quest of The Ages ===" << endl;
+cout << "1. View Player" << endl; 
+cout << "2. Attack Enemy" << endl; 
+cout << "3. Quit" << endl; 
 
-        cout << "Choose: ";
-        cin >> choice;
+cout << "Choose: ";
+cin >> choice;
 
 
-        if(choice == 1) {
+    if(choice == 1) {
 
             cout << "Player: " << player.getName() << endl;
 
@@ -38,7 +38,7 @@ else if(choice == 2) {
     player.attack();
     sorcerer.takeDamage(10);
 
-    cout << "Enemy Health: " << sorcerer.getHealth() << endl;
+    cout << "Enemy Health: " << sorcerer.gethealth() << endl;
 
         }
 
@@ -50,7 +50,7 @@ else if(choice == 3) {
 
         else {
 
-            cout << "Invalid choice.";
+            cout << "Invalid choice, choose again.";
 
         }
 
@@ -59,3 +59,4 @@ else if(choice == 3) {
 
     return 0;
 }
+
