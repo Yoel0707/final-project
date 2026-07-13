@@ -13,7 +13,7 @@ Enemy(string enemyName);
 
 int getAttackPower();
 
-void attack(); 
+int attack(); 
 
 };
 

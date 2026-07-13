@@ -12,7 +12,7 @@ int Enemy::getAttackPower() {
     return attackPower; 
 }
 
-void Enemy::attack() {
+int Enemy::attack() {
     cout << name << " attacks with majestical power " << attackPower << endl;
-    
+    return attackPower;
 }

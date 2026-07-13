@@ -10,7 +10,7 @@ class MainCharacter {
 
 public: 
 MainCharacter(string characterName, int characterhealth);  
-
+MainCharacter(); 
 
 int gethealth();
 
@@ -20,7 +20,7 @@ string getName();
 
 string name; 
 int health;
-
+bool isalivedead(); 
 };
 
 #endif

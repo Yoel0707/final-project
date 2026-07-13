@@ -2,10 +2,10 @@
 #define PLAYER_H
 
 #include <string>
-
+#include "maincharacter.h"
 using namespace std;
 
-class Player {
+class Player: public MainCharacter {
 private:
     string name;
     int health;
@@ -17,8 +17,9 @@ public:
     string getName();
     int gethealth();
     int getAttackPower();
-void attack(); 
+int attack(); 
     void takeDamage(int damage);
+    void displaystats();
 };
 
 #endif

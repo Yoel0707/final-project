@@ -20,8 +20,8 @@ int Player::getAttackPower() {
     return attackPower;
 }
 
-void Player::attack() {
-    cout << name << " uses all his power and attacks!!!! " << attackPower << endl; 
+int Player::attack() {
+    return attackPower;
 }
 
 void Player::takeDamage(int damage) {
@@ -33,3 +33,11 @@ if (health < 0) {
 
 }
 }
+void Player::displaystats()
+{
+    cout << endl;
+    cout << "Player: " << getName() << endl;
+    cout << "Health: " << gethealth() << endl;
+    cout << "Attack: " << attackPower << endl;
+}
+
