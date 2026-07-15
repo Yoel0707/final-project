@@ -7,6 +7,9 @@ using namespace std;
 
 class MainCharacter {
 
+protected: 
+    string name; 
+    int health;
 
 public: 
 MainCharacter(string characterName, int characterhealth);  
@@ -18,8 +21,6 @@ int gethealth();
 void takeDamage(int damage); 
 string getName(); 
 
-string name; 
-int health;
 bool isalivedead(); 
 };
 

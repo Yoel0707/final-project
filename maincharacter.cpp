@@ -1,5 +1,5 @@
 #include "maincharacter.h"
-
+using namespace std;
 MainCharacter::MainCharacter(string characterName, int characterhealth) {
     name = characterName;
     health = characterhealth;
@@ -25,5 +25,6 @@ bool MainCharacter::isalivedead() {
 }
 MainCharacter::MainCharacter()
 {
-    health = 100;
+    name = "Unknown";
+    health = 150;
 }

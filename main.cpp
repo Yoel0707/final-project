@@ -1,15 +1,18 @@
 #include <iostream>
 #include "player.h"
 #include "enemy.h"
-
+#include "location.h"
 using namespace std;
 
 
-void displayMenu() {
+int displayMenu() {
+    int choice; 
     cout << "=== The Quest of The Ages ===" << endl;
 cout << "1. Play" << endl;
 cout << "2. Quit" << endl;
 cout << "Choose: " << endl; 
+cin >> choice;
+return choice; 
 }
 
 void story() {
@@ -64,7 +67,7 @@ if (enemy.isalivedead())
 
 int main() {
 int choice; 
-displayMenu();
+choice = displayMenu();
 
 if(choice ==2) {
     cout << "Leaving game...";
@@ -77,19 +80,22 @@ else if(choice == 1) {
 
 else {
     cout << "Invalid choice, choose again.";
+    return 0;
 }
-
+void story();
 Player player("Shrek");
-Enemy sorcerer("Odin");
-
+Enemy forestEnemy("Evil Wolf");
+Location forest ("Dark Forest", "A dark and eerie forest filled with dangerous creatures.");
 cout << "Your journey begins!" << endl;
 
-while(choice != 3) {
+while(choice != 5) {
 
 cout << "=== The Quest of The Ages ===" << endl;
 cout << "1. View Player" << endl; 
-cout << "2. Attack Enemy" << endl; 
-cout << "3. Quit" << endl; 
+cout << "2. Travel Forward" << endl;
+cout << "3. Travel Backward" << endl;
+cout << "4. View Inventory" << endl;
+cout << "5. Quit" << endl; 
 
 cout << "Choose: ";
 cin >> choice;
@@ -105,28 +111,47 @@ cin >> choice;
 
 else if(choice == 2) {
 
-    player.attack();
-    sorcerer.takeDamage(10);
+    cout << "You travel through the Dark Forest..." << endl;
+    cout << "An Evil Wolf appears!" << endl;
 
-    cout << "Enemy Health: " << sorcerer.gethealth() << endl;
+    battle(player, forestEnemy);
 
-        }
+}
 
 else if(choice == 3) {
 
-            cout << "Leaving game...";
+    cout << "You travel backward to the previous area." << endl;
 
-        }
+}
 
-        else {
+
+else if(choice == 4)
+{
+    cout << endl;
+    cout << "===== INVENTORY =====" << endl;
+
+    cout << "Spells: "
+         << player.getSpells()
+         << endl;
+
+    cout << "Artifacts: "
+         << player.getArtifacts()
+         << endl;
+
+    player.displayInventory();
+
+    cout << endl;
+}
+
+else {
 
             cout << "Invalid choice, choose again.";
 
         }
 
-    }
-
-
-    return 0;
 }
 
+return 0; 
+
+
+}
