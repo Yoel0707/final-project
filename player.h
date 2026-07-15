@@ -28,6 +28,9 @@ void collectSpell();
 void collectArtifact();
 void addItem(Item item);
 void displayInventory();
+void loseEnergy(int amount);
+int getDay();
+void nextDay();
 };
 
 #endif

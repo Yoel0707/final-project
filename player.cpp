@@ -8,10 +8,8 @@ attackPower = 10;
 spells= 0;
 artifacts= 0;
 energy= 100;
-int getEnergy();
 void setEnergy(int amount);
 void nextDay();
-int getDay();
 void loseEnergy(int amount);
 }
 
@@ -81,18 +79,6 @@ int Player::getEnergy()
 {
     return energy;
 }
-
-void Player::setEnergy(int amount)
-{
-    energy = amount;
-}
-
-
-int Player::getEnergy()
-{
-    return energy;
-}
-
 
 void Player::setEnergy(int amount)
 {

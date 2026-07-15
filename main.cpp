@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <fstream>
 #include "player.h"
 #include "enemy.h"
 #include "location.h"
@@ -15,14 +17,17 @@ cin >> choice;
 return choice; 
 }
 
-void story() {
-    cout << "In a world where darkness reigns, a hero emerges from the gutter to challenge the great forces of evil." << endl;
-    cout << "You are Shrek, a brave warrior on a quest to defeat the sorcerer Odin and restore peace in the precious land." << endl;
-    cout << "Prepare for battle and make your choices wisely for the kingdom!" << endl;
+
+void displayStory()
+{
+    ifstream file("dialogue.txt");
+    string line;
+    while(getline(file,line))
+    {
+        cout << line << endl;
+    }
+    cout << endl;
 }
-
-
-
 
 
 void battle(Player player, Enemy enemy)
@@ -75,7 +80,7 @@ if(choice ==2) {
 }
 
 else if(choice == 1) {
-    story();
+    displayStory();
 }
 
 else {
@@ -143,6 +148,13 @@ else if(choice == 4)
     cout << endl;
 }
 
+
+
+
+else if(choice == 5)
+{
+    cout << "Thanks for playing!" << endl;
+}
 else {
 
             cout << "Invalid choice, choose again.";
