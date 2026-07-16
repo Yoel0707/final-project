@@ -74,7 +74,7 @@ int main() {
 int choice; 
 choice = displayMenu();
 
-while(choice !=1&& choice !=2) {
+while(choice !=1 && choice !=2) {
 cout << "Invalid choice, choose again." << endl;
 choice = displayMenu();
 }
@@ -100,7 +100,8 @@ Location shop("Magic Shop", "A mystical shop where you can buy useful items.");
 cout << "Your journey begins!" << endl;
 
 while(choice != 8) {
-
+cout << "Current Day: " << day << endl;
+cout << endl; 
 cout << "=== The Quest of The Ages ===" << endl;
 cout << "1. View Player" << endl; 
 cout << "2. Travel Forward" << endl;
@@ -125,14 +126,11 @@ cin >> choice;
 
 else if(choice == 2) {
 
-   day++;
-
 if(currentLocation < 4)
 {
     currentLocation++;
-}
+    day++; 
 
-cout << endl;
 
 if(currentLocation == 1)
 {
@@ -142,6 +140,8 @@ if(currentLocation == 1)
 else if(currentLocation == 2)
 {
     cout << "You arrive at a Cave." << endl;
+    cout << "A Cave Troll appears!" << endl;
+    battle(player, caveEnemy);
 }
 
 else if(currentLocation == 3)
@@ -152,12 +152,32 @@ else if(currentLocation == 3)
 else if(currentLocation == 4)
 {
     cout << "You arrive at the Castle." << endl;
+    cout << "A Dark Knight appears!" << endl;
+    battle(player, castleEnemy);
 }
-
+if(day>10) {
+        cout << "You ran out of time. Game Over." << endl;
+        return 0; 
+    }
 }
-
+else
+{
+    cout << "You cannot travel forward any further." << endl;
+}
+}
 else if(choice == 3) {
-day++; 
+if (currentLocation > 0) {
+    currentLocation--;
+    day++; 
+    cout << "You travel backward to the previous area." << endl;
+if (day > 10) {
+        cout << "You ran out of time. Game Over." << endl;
+        return 0; 
+    }
+}
+else {
+cout << "You cannot travel backward any further." << endl;
+}
 
 if (currentLocation > 0)
 {
@@ -239,14 +259,34 @@ else if(choice == 6)
 }
 else if (choice == 7)
 {
-    if(currentLocation == 4)
+    if(currentLocation != 4)
     {
-        cout << "You challenge Farquad!" << endl;
-        battle(player, finalBoss);
+        cout << "You must reach the Castle to challenge Farquad." << endl;
+    
+    }
+    else if (player.getSpells() < 3) 
+    {
+        cout << "You must collect 3 spells first." << endl;
+    }
+
+    else if(player.getArtifacts() < 2) 
+    {
+        cout << "You must collect 2 artifacts first." << endl;
     }
     else
     {
-        cout << "You must be at the Castle to challenge Farquad." << endl;
+        cout << "You challenge Farquad!" << endl;
+        battle(player, finalBoss);
+        if (player.isalivedead())
+        {
+            cout << "Congratulations! You have defeated Farquad and saved the kingdom!" << endl;
+            break; 
+        }
+        else
+        {
+            cout << "You were defeated by Farquad. Game Over." << endl;
+            break; 
+        }
     }
 }
 else if(choice == 8)
