@@ -14,6 +14,8 @@ int artifacts;
 int energy; 
 int day; 
 int potions; 
+int energypotions; 
+int darkMagic; 
 vector<Item> inventory;
 public:
     Player(string playerName);
@@ -35,7 +37,12 @@ void nextDay();
 int getPotions();
 void addPotion();
 void usePotion();
+int getenergyPotions();
+void addenergyPotion();
+void useenergyPotion();
 void setHealth(int health);
+int getdarkmagic(); 
+void usedarkmagic();
 };
 
 #endif

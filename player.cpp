@@ -33,18 +33,15 @@ void Player::collectSpell()
     spells++;
 }
 
-
 void Player::collectArtifact()
 {
     artifacts++;
 }
 
-
 int Player::getSpells()
 {
     return spells;
 }
-
 
 int Player::getArtifacts()
 {
@@ -54,7 +51,6 @@ void Player::addItem(Item item)
 {
     inventory.push_back(item);
 }
-
 
 void Player::displayInventory()
 {
@@ -85,7 +81,6 @@ void Player::setEnergy(int amount)
     energy = amount;
 }
 
-
 void Player::loseEnergy(int amount)
 {
     energy -= amount;
@@ -96,12 +91,10 @@ void Player::loseEnergy(int amount)
     }
 }
 
-
 int Player::getDay()
 {
     return day;
 }
-
 
 void Player::nextDay()
 {
@@ -113,12 +106,10 @@ int Player::getPotions()
     return potions;
 }
 
-
 void Player::addPotion()
 {
     potions++;
 }
-
 
 void Player::usePotion()
 {
@@ -129,8 +120,17 @@ void Player::usePotion()
     }
 }
 
-
-void Player::setHealth(int health)
+void Player::setHealth(int newHealth)
 {
-    health=health;
+    health=newHealth;
+}
+
+int Player::getdarkmagic()
+{
+    return darkMagic;
+}
+
+void Player::usedarkmagic()
+{
+    darkMagic++;
 }
