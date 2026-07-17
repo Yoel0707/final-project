@@ -99,18 +99,17 @@ Location finalBossLocation ("Farquad's Lair", "A fiery lair where Farquad reside
 Location shop("Magic Shop", "A mystical shop where you can buy useful items.");
 cout << "Your journey begins!" << endl;
 
-while(choice != 8) {
+while(choice != 7) {
 cout << "Current Day: " << day << endl;
 cout << endl; 
 cout << "=== The Quest of The Ages ===" << endl;
 cout << "1. View Player" << endl; 
-cout << "2. Travel Forward" << endl;
-cout << "3. Travel Backward" << endl;
-cout << "4. View Inventory" << endl;
-cout << "5. Talk to An NPC" << endl; 
-cout << "6. View Location" << endl;
-cout << "7. Challenge Farquad" << endl;
-cout << "8. Quit Game" << endl;
+cout << "2. Travel" << endl;
+cout << "3. View Inventory" << endl;
+cout << "4. Talk to An NPC" << endl; 
+cout << "5. View Location" << endl;
+cout << "6. Challenge Farquad" << endl;
+cout << "7. Quit Game" << endl;
 
 cout << "Choose: ";
 cin >> choice;
@@ -126,22 +125,81 @@ cin >> choice;
 
 else if(choice == 2) {
 
-if(currentLocation < 4)
+int travelChoice;
+if(currentLocation == 0)
 {
-    currentLocation++;
-    day++; 
+    cout << "You are at the Wizard's Hut." << endl;
+    cout << "1. Travel to Village" << endl;
+    cout << "2. Travel to Cave" << endl;
+    cout << "3. Travel to Magic Shop" << endl;
+    cin >> travelChoice;
 
+    if(travelChoice == 1)
+    {
+        cout << "You travel to the Village." << endl;
+        currentLocation=1; 
+        day++; 
+    }
+    else if(travelChoice == 2)
+    {
+        cout << "You travel to the Cave." << endl;
+        currentLocation=2; 
+        day++; 
+    }
+    else if(travelChoice == 3)
+    {
+        cout << "You travel to the Magic Shop." << endl;
+        currentLocation=3; 
+        day++; 
+    }
+    else
+    {
+        cout << "Invalid choice, you stay at the Wizard's Hut." << endl;
+        currentLocation=0; 
+    }
+} 
 
-if(currentLocation == 1)
+else if(currentLocation == 1)
 {
     cout << "You arrive at the Village." << endl;
+    cout << "1. Wizard's Hut" << endl;
+    cout << "2. Cave" << endl;
+    cout << "3. Magic Shop" << endl;
+    cin>> travelChoice;
+    
+    if(travelChoice == 1)
+    {
+        cout << "You enter the Wizard's Hut." << endl;
+        currentLocation=0; 
+        day++; 
 }
 
-else if(currentLocation == 2)
-{
-    cout << "You arrive at a Cave." << endl;
+else if(travelChoice == 2)
+    {
+        cout << "You enter the Cave." << endl;
     cout << "A Cave Troll appears!" << endl;
     battle(player, caveEnemy);
+        currentLocation=2; 
+        day++; 
+    }
+    else if(travelChoice == 3)
+    {
+        cout << "You enter the Magic Shop." << endl;
+        currentLocation=3; 
+        day++; 
+    }
+    else
+    {
+        cout << "Invalid choice, you stay in the Village." << endl;
+        currentLocation=1; 
+    }
+}
+
+else if(currentLocation==2)
+{
+
+cout << "You arrive at the Cave." << endl; 
+
 }
 
 else if(currentLocation == 3)
@@ -159,36 +217,15 @@ if(day>10) {
         cout << "You ran out of time. Game Over." << endl;
         return 0; 
     }
-}
+
 else
 {
     cout << "You cannot travel forward any further." << endl;
 }
-}
-else if(choice == 3) {
-if (currentLocation > 0) {
-    currentLocation--;
-    day++; 
-    cout << "You travel backward to the previous area." << endl;
-if (day > 10) {
-        cout << "You ran out of time. Game Over." << endl;
-        return 0; 
-    }
-}
-else {
-cout << "You cannot travel backward any further." << endl;
-}
-
-if (currentLocation > 0)
-{
-    currentLocation--;
-
-    cout << "You travel backward to the previous area." << endl;
 
 }
 
-}
-else if(choice == 4)
+else if(choice == 3)
 {
     cout << endl;
     cout << "===== INVENTORY =====" << endl;
@@ -207,7 +244,7 @@ else if(choice == 4)
 }
 
 
-else if (choice==5){
+else if (choice==4){
 
 if (currentLocation==0){
 
@@ -234,8 +271,19 @@ cout << "The King says: Save Us!!" << endl;
 
 }
 }
-else if(choice == 6)
+else if(choice == 5)
 {
+
+cout << "+---------- The Quest of The Ages ----------+" << endl;
+cout << endl; 
+cout << "               [Farquad's Lair]" << endl;
+cout << "                       |" << endl;
+cout << "                   [Castle]" << endl;
+cout << "                       |" << endl;
+cout << "                    [Cave]" << endl; 
+cout << "                       |" << endl;
+cout << " [Wizard's Hut]--- [Village]---[Magic Shop]" << endl;
+cout << endl; 
     if(currentLocation == 0)
     {
         cout << "You are at the starting point of your journey." << endl;
@@ -257,7 +305,7 @@ else if(choice == 6)
         cout << castle.getdescription() << endl;
     }
 }
-else if (choice == 7)
+else if (choice == 6)
 {
     if(currentLocation != 4)
     {
@@ -289,7 +337,7 @@ else if (choice == 7)
         }
     }
 }
-else if(choice == 8)
+else if(choice == 7)
 {
     cout << "Thanks for playing!" << endl;
 }
