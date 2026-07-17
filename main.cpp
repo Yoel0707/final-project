@@ -195,13 +195,85 @@ else if(currentLocation==2)
 {
 
 cout << "You arrive at the Cave." << endl; 
-
+cout << "1. Wizard's Hut" << endl;
+cout << "2. Village" << endl;
+cout << "3. Magic Shop" << endl;
+cout << "4. Castle" << endl;
+cin >> travelChoice;
+    
+    if(travelChoice == 1)
+    {
+        cout << "You travel to the Wizard's Hut." << endl;
+        currentLocation = 0;
+        day++;
+    }
+    else if(travelChoice == 2)
+    {
+        cout << "You travel to the Village." << endl;
+        currentLocation = 1;
+        day++;
+    }
+    else if(travelChoice == 3)
+    {
+        cout << "You travel to the Magic Shop." << endl;
+        currentLocation = 3;
+        day++;
+    }
+    else if(travelChoice == 4)
+    {
+        cout << "You travel to the Castle." << endl;
+        currentLocation = 4;
+        day++;
+    }
+    else
+    {
+        cout << "Invalid choice, you stay in the Cave." << endl;
+        currentLocation = 2;
+    }
 }
+
+
 
 else if(currentLocation == 3)
 {
     cout << "You arrive at the Magic Shop." << endl;
+    cout << "1. Wizard's Hut" << endl;
+    cout << "2. Village" << endl;
+    cout << "3. Cave" << endl;
+    cout << "4. Castle" << endl;
+    cin >> travelChoice;
+    
+    if(travelChoice == 1)
+    {
+        cout << "You travel to the Wizard's Hut." << endl;
+        currentLocation = 0;
+        day++;
+    }
+    else if(travelChoice == 2)
+    {
+        cout << "You travel to the Village." << endl;
+        currentLocation = 1;
+        day++;
+    }
+    else if(travelChoice == 3)
+    {
+        cout << "You travel to the Cave." << endl;
+        currentLocation = 2;
+        day++;
+    }
+    else if(travelChoice == 4)
+    {
+        cout << "You travel to the Castle." << endl;
+        currentLocation = 4;
+        day++;
+    }
+    else
+    {
+        cout << "Invalid choice, you stay in the Magic Shop." << endl;
+        currentLocation = 3;
+    }
 }
+
 
 else if(currentLocation == 4)
 {
@@ -209,8 +281,7 @@ else if(currentLocation == 4)
     cout << "A Dark Knight appears!" << endl;
     while(player.isalivedead() && castleEnemy.isalivedead())
     {
-        cout << player.getName()
-        << " attacks gracefully!" << endl;
+        cout << player.getName() << " attacks gracefully!" << endl;
 
         castleEnemy.takeDamage(player.attack());
 
@@ -236,14 +307,65 @@ else if(currentLocation == 4)
 
         player.collectArtifact();
 
-        currentLocation=4;
-
-        day++;
+        cout << "1. Wizard's Hut" << endl;
+        cout << "2. Village" << endl;
+        cout << "3. Cave" << endl;
+        cout << "4. Magic Shop" << endl;
+        cout << "5. Farquad's Lair" << endl;
+        cin >> travelChoice;
+        
+        if(travelChoice == 1) { 
+            currentLocation = 0; day++; 
+        }
+        else if(travelChoice == 2) { 
+            currentLocation = 1; day++; 
+        }
+        else if(travelChoice == 3) { 
+            currentLocation = 2; day++; 
+        }
+        else if(travelChoice == 4) { 
+            currentLocation = 3; day++; 
+        }
+        else if(travelChoice == 5) { 
+            currentLocation = 5; day++; 
+        }
     }
-
     else
     {
-        cout<<"Game Over."<<endl;
+        cout << "Game Over." << endl;
+        return 0;
+    }
+}
+else if(currentLocation == 5)
+{
+    cout << "You arrive at Farquad's Lair!" << endl;
+    cout << "A Fiery Lair appears before you!" << endl;
+    cout << "The Dark Lord Farquad appears!" << endl;
+
+    while(player.isalivedead() && finalBoss.isalivedead())
+    {
+        cout << player.getName() << " attacks!" << endl;
+        finalBoss.takeDamage(player.attack());
+        cout << finalBoss.getName() << " health: " << finalBoss.gethealth() << endl;
+
+        if(finalBoss.isalivedead())
+        {
+            cout << endl;
+            cout << finalBoss.getName() << " attacks!" << endl;
+            player.takeDamage(finalBoss.attack());
+            cout << player.getName() << " health: " << player.gethealth() << endl;
+        }
+    }
+
+    if(player.isalivedead())
+    {
+        cout << "You defeated Farquad!" << endl;
+        cout << "You saved the kingdom! You are a true hero!" << endl;
+        cout << "Game Complete!" << endl;
+        return 0;
+    }
+    else
+    { cout << "Game Over." << endl;
         return 0;
     }
 }
