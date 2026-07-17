@@ -29,47 +29,6 @@ void displayStory()
     cout << endl;
 }
 
-
-void battle(Player player, Enemy enemy)
-{
-    while (player.isalivedead() && enemy.isalivedead())
-    {
-cout << player.getName() << " attacks gracefully!" << endl;
-
-    enemy.takeDamage(player.attack());
-
-        cout << enemy.getName() << " health: "
-             << enemy.gethealth() << endl;
-
-
-if (enemy.isalivedead())
-    {
-            cout << endl;
-
-            cout << enemy.getName() << " attacks!" << endl;
-
-            player.takeDamage(enemy.attack());
-
-            cout << player.getName() << " health: "
-                 << player.gethealth() << endl;
-        }
-    }
-
-
-    if (player.isalivedead())
-    {
-        cout << endl;
-        cout << "You defeated the enemy!" << endl;
-    }
-    else
-    {
-        cout << endl;
-        cout << "You were defeated." << endl;
-    }
-}
-
-
-
 int main() {
 int choice; 
 choice = displayMenu();
@@ -99,17 +58,18 @@ Location finalBossLocation ("Farquad's Lair", "A fiery lair where Farquad reside
 Location shop("Magic Shop", "A mystical shop where you can buy useful items.");
 cout << "Your journey begins!" << endl;
 
-while(choice != 7) {
+while(choice != 8) {
 cout << "Current Day: " << day << endl;
 cout << endl; 
 cout << "=== The Quest of The Ages ===" << endl;
 cout << "1. View Player" << endl; 
 cout << "2. Travel" << endl;
 cout << "3. View Inventory" << endl;
-cout << "4. Talk to An NPC" << endl; 
-cout << "5. View Location" << endl;
-cout << "6. Challenge Farquad" << endl;
-cout << "7. Quit Game" << endl;
+cout << "4. Use Potion" << endl; 
+cout << "5. Talk to An NPC" << endl; 
+cout << "6. View Location" << endl;
+cout << "7. Challenge Farquad" << endl;
+cout << "8. Quit Game" << endl;
 
 cout << "Choose: ";
 cin >> choice;
@@ -142,7 +102,7 @@ if(currentLocation == 0)
     }
     else if(travelChoice == 2)
     {
-        cout << "You travel to the Cave." << endl;
+        cout << "You enter the Cave." << endl;
         currentLocation=2; 
         day++; 
     }
@@ -176,11 +136,47 @@ else if(currentLocation == 1)
 
 else if(travelChoice == 2)
     {
-        cout << "You enter the Cave." << endl;
+    cout << "You enter the Cave." << endl;
     cout << "A Cave Troll appears!" << endl;
-    battle(player, caveEnemy);
-        currentLocation=2; 
-        day++; 
+while(player.isalivedead() && caveEnemy.isalivedead())
+    {
+        cout << player.getName() << " attacks gracefully!" << endl;
+
+        caveEnemy.takeDamage(player.attack());
+
+        cout << caveEnemy.getName() << " health: " << caveEnemy.gethealth() << endl;
+
+        if(caveEnemy.isalivedead())
+        {
+            cout << endl;
+
+            cout << caveEnemy.getName() << " attacks!" << endl;
+
+            player.takeDamage(caveEnemy.attack());
+
+            cout << player.getName() << " health: " << player.gethealth() << endl;
+        }
+    }
+
+    if(player.isalivedead())
+    {
+        cout<<"You defeated the Cave Troll!"<<endl;
+
+        cout<<"You found an Ancient Crown!"<<endl;
+
+        player.collectArtifact();
+
+        currentLocation=2;
+
+        day++;
+    }
+
+    else
+    {
+        cout<<"Game Over."<<endl;
+        return 0;
+    }
+
     }
     else if(travelChoice == 3)
     {
@@ -211,17 +207,50 @@ else if(currentLocation == 4)
 {
     cout << "You arrive at the Castle." << endl;
     cout << "A Dark Knight appears!" << endl;
-    battle(player, castleEnemy);
+    while(player.isalivedead() && castleEnemy.isalivedead())
+    {
+        cout << player.getName()
+        << " attacks gracefully!" << endl;
+
+        castleEnemy.takeDamage(player.attack());
+
+        cout << castleEnemy.getName() << " health: " << castleEnemy.gethealth() << endl;
+
+        if(castleEnemy.isalivedead())
+        {
+            cout << endl;
+
+            cout << castleEnemy.getName() << " attacks!" << endl;
+
+            player.takeDamage(castleEnemy.attack());
+
+            cout << player.getName() << " health: " << player.gethealth() << endl;
+        }
+    }
+
+    if(player.isalivedead())
+    {
+        cout<<"You defeated the Dark Knight!"<<endl;
+
+        cout<<"You found the Dragon Crystal!"<<endl;
+
+        player.collectArtifact();
+
+        currentLocation=4;
+
+        day++;
+    }
+
+    else
+    {
+        cout<<"Game Over."<<endl;
+        return 0;
+    }
 }
 if(day>10) {
         cout << "You ran out of time. Game Over." << endl;
         return 0; 
     }
-
-else
-{
-    cout << "You cannot travel forward any further." << endl;
-}
 
 }
 
@@ -230,40 +259,72 @@ else if(choice == 3)
     cout << endl;
     cout << "===== INVENTORY =====" << endl;
 
-    cout << "Spells: "
-         << player.getSpells()
-         << endl;
+cout<< "Health: " <<player.gethealth() <<endl;
 
-    cout << "Artifacts: "
-         << player.getArtifacts()
-         << endl;
+cout<< "Healing Potions: " <<player.getPotions() <<endl;
 
-    player.displayInventory();
+cout << "Spells: " << player.getSpells() << endl;
 
-    cout << endl;
+cout << "Artifacts: " << player.getArtifacts() << endl;
+
+player.displayInventory();
+
+cout << endl;
 }
 
 
-else if (choice==4){
+else if(choice==4)
+{
+    if(player.getPotions()>0)
+    {
+    player.usePotion();
+
+    player.setHealth(player.gethealth()+25);
+
+    cout<<"You restored 25 health!"<<endl;
+    }
+
+    else
+    {
+        cout<<"You have no potions remaining."<<endl;
+    }
+}
+
+else if (choice==5){
 
 if (currentLocation==0){
 
-cout << "The Wizard says: I wish you the best of luck, save the kingdom!" << endl;
-
+cout << "The Wizard says: I wish you the best of luck, save the kingdom and here's a gift!" << endl;
+player.collectSpell(); 
 
 }
 
 else if (currentLocation==1){
-cout << "The villagers say: Thank you for helping us againist evil please rest!" << endl;
-
+cout << "The villagers say: Thank you for helping us againist evil please rest and please take this it's been passed down to from generations." << endl;
+player.collectSpell(); 
 }
 else if (currentLocation==2){
 cout << "The Cave Troll says: You will not defeat me!" << endl;
 
 }
 else if (currentLocation==3){
-cout << "The shopkeeper says: Powerful artificats and spells await!" << endl;
+cout << "The shopkeeper says: Powerful artificats and spells await what would you like!" << endl;
+int shopChoice;
 
+cout<< "1. Ice Spell"<<endl;
+cout<< "2. Healing Potion"<<endl;
+cout<< "3. Leave"<<endl;
+
+cin>>shopChoice;
+if(shopChoice==1)
+{
+    player.collectSpell();
+}
+
+else if(shopChoice==2)
+{
+    player.addPotion();
+}
 }
 else if (currentLocation==4){
 
@@ -271,7 +332,7 @@ cout << "The King says: Save Us!!" << endl;
 
 }
 }
-else if(choice == 5)
+else if(choice == 6)
 {
 
 cout << "+---------- The Quest of The Ages ----------+" << endl;
@@ -305,7 +366,7 @@ cout << endl;
         cout << castle.getdescription() << endl;
     }
 }
-else if (choice == 6)
+else if (choice == 7)
 {
     if(currentLocation != 4)
     {
@@ -324,20 +385,40 @@ else if (choice == 6)
     else
     {
         cout << "You challenge Farquad!" << endl;
-        battle(player, finalBoss);
+
+    while(player.isalivedead() && finalBoss.isalivedead())
+    {
+        cout << player.getName() << " attacks gracefully!" << endl;
+
+        finalBoss.takeDamage(player.attack());
+
+        cout << finalBoss.getName() << " health: " << finalBoss.gethealth() << endl;
+
+        if(finalBoss.isalivedead())
+        {
+            cout << endl;
+
+            cout << finalBoss.getName() << " attacks!" << endl;
+
+            player.takeDamage(finalBoss.attack());
+
+            cout << player.getName() << " health: " << player.gethealth() << endl;
+        }
+    }
+       
         if (player.isalivedead())
         {
             cout << "Congratulations! You have defeated Farquad and saved the kingdom!" << endl;
-            break; 
+        
         }
         else
         {
             cout << "You were defeated by Farquad. Game Over." << endl;
-            break; 
+            
         }
     }
 }
-else if(choice == 7)
+else if(choice == 8)
 {
     cout << "Thanks for playing!" << endl;
 }

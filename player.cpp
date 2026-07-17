@@ -107,3 +107,30 @@ void Player::nextDay()
 {
     day++;
 }
+
+int Player::getPotions()
+{
+    return potions;
+}
+
+
+void Player::addPotion()
+{
+    potions++;
+}
+
+
+void Player::usePotion()
+{
+
+    if (potions>0)
+    {
+    potions--;
+    }
+}
+
+
+void Player::setHealth(int health)
+{
+    health=health;
+}
