@@ -102,7 +102,8 @@ void Player::displayInventory()
     {
         cout << i + 1 << ". " << inventory[i].getName() << " ("  << inventory[i].getType() << ")" << endl;
 
-    
+  //Tracks inventory
+
     }
 }
 

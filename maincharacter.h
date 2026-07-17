@@ -12,7 +12,7 @@ protected:
     int health;
 
 public: 
-MainCharacter(string characterName, int characterhealth);  
+MainCharacter(string characterName, int characterhealth);  //Declaring Constructor 
 MainCharacter(); 
 
 int gethealth();
@@ -21,7 +21,7 @@ int gethealth();
 void takeDamage(int damage); 
 string getName(); 
 
-bool isalivedead(); 
+bool isalivedead(); //Checks if player/enemy is alive or dead 
 };
 
 #endif

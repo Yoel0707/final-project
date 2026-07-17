@@ -19,7 +19,7 @@ int energypotions;
 int darkMagic; 
 int dragonartifacts; 
 int crownartifacts; 
-vector<Item> inventory;
+vector<Item> inventory; //Using a vector due to the fact that its very verastile 
 public:
     Player(string playerName);
     int getAttackPower();

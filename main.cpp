@@ -6,7 +6,7 @@
 #include "location.h"
 using namespace std;
 
-
+// Displays the starting menu allowing the player to play or quit.
 int displayMenu() {
 int choice; 
 cout << "=== The Quest of The Ages ===" << endl;
@@ -47,6 +47,7 @@ displayStory();
 }
 int day=1; 
 int currentLocation = 0;
+// Creates the player, enemies, and all game locations.
 Player player("Shrek");
 Location village("Village", "A small village with friendly villagers.");
 Enemy caveEnemy("Cave Troll");
@@ -58,6 +59,7 @@ Location finalBossLocation ("Farquad's Lair", "A fiery lair where Farquad reside
 Location shop("Magic Shop", "A mystical shop where you can buy useful items.");
 cout << "Your journey begins!" << endl;
 
+// Main game loop that continues until the player quits or wins/loses.
 while(choice != 9) {
 cout << "Current Day: " << day << endl;
 cout << endl; 
@@ -87,10 +89,11 @@ if (player.getEnergy() <= 0) {
             cout << "Health: " << player.gethealth() << endl;
 
         }
-
+// Main game loop that continues until the player quits or wins/loses.
 else if(choice == 2) {
 
 int travelChoice;
+// Wizard's Hut travel options.
 if(currentLocation == 0)
 {
     cout << "You are at the Wizard's Hut." << endl;
@@ -129,7 +132,7 @@ if(currentLocation == 0)
         currentLocation=0; 
     }
 } 
-
+// Village travel options 
 else if(currentLocation == 1)
 {
     cout << "You arrive at the Village." << endl;
@@ -279,7 +282,7 @@ while(player.isalivedead() && caveEnemy.isalivedead())
         currentLocation=1; 
     }
 }
-
+// Cave travel options.
 else if(currentLocation==2)
 {
 
@@ -330,7 +333,7 @@ cin >> travelChoice;
 }
 
 
-
+// Magic Shop travel options.
 else if(currentLocation == 3)
 {
     cout << "You arrive at the Magic Shop." << endl;
@@ -379,7 +382,7 @@ else if(currentLocation == 3)
     }
 }
 
-
+//Castle battle that will eventually lead to fight
 else if(currentLocation == 4)
 {
     cout << "You arrive at the Castle." << endl;
@@ -452,6 +455,7 @@ else if(currentLocation == 4)
         return 0;
     }
 }
+//Final Battle!
 else if(currentLocation == 5)
 {
     cout << "You arrive at Farquad's Lair!" << endl;
@@ -491,7 +495,7 @@ if(day>10) {
     }
 
 }
-
+//Using functions for inventory display
 else if(choice == 3)
 {
     cout << endl;
@@ -701,7 +705,7 @@ else if (choice == 8)
             cout << player.getName() << " health: " << player.gethealth() << endl;
         }
     }
-       
+//Different endings 
     if (player.isalivedead())
     {
     cout << "Congratulations! You have defeated Farquad and saved the kingdom!" << endl;
