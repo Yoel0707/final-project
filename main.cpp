@@ -179,7 +179,7 @@ while(player.isalivedead() && caveEnemy.isalivedead())
 
         cout<<"You found an Ancient Crown!"<<endl;
 
-        player.collectArtifact();
+        player.collectcrownArtifact();
 
         currentLocation=2;
 
@@ -232,7 +232,7 @@ while(player.isalivedead() && caveEnemy.isalivedead())
 
         cout<<"You found the Dragon Crystal!"<<endl;
 
-        player.collectArtifact();
+        player.collectdragonArtifact();
 
         cout << "1. Wizard's Hut" << endl;
         cout << "2. Village" << endl;
@@ -411,7 +411,7 @@ else if(currentLocation == 4)
 
         cout<<"You found the Dragon Crystal!"<<endl;
 
-        player.collectArtifact();
+        player.collectdragonArtifact();
 
         cout << "1. Wizard's Hut" << endl;
         cout << "2. Village" << endl;
@@ -505,15 +505,24 @@ cout<< "Healing Potions: " <<player.getPotions() <<endl;
 
 cout<< "Energy Potions: " << player.getenergyPotions() << endl; 
 
-cout << "Spells: " << player.getSpells() << endl;
+cout << "Ice Spells: " << player.getIceSpells() << endl;
 
-cout << "Artifacts: " << player.getArtifacts() << endl;
+cout << "Fire Spells: " << player.getFireSpells() << endl;
+
+cout << "Lightning Spells: " << player.getLightningSpells() << endl;
+
+cout << "Total Spells: " << player.getTotalSpells() << endl;
+
+cout << "Crown Artifacts: " << player.getcrownArtifact() << endl;
+
+cout << "Dragon Artifacts: " << player.getdragonArtifact() << endl;
+
+cout << "Total Artifacts: " << player.getcrownArtifact() + player.getdragonArtifact() << endl;
 
 player.displayInventory();
 
 cout << endl;
 }
-
 
 else if(choice==4)
 {
@@ -551,18 +560,18 @@ else if (choice==6){
 
 if (currentLocation==0){
 
-cout << "The Wizard says: You must collect 3 spells and 2 artificats, here's a gift!" << endl;
-player.collectSpell(); 
+cout << "The Wizard says: Do not be influenced by darkness, here's my lightning gift" << endl;
+player.collectLightningSpell();
 
 }
 
 else if (currentLocation==1){
 cout << "The villager leader say: Thank you for helping us againist evil please rest and take" << endl;
-cout << "this spell, you will most certainly need it" << endl; 
-player.collectSpell(); 
+cout << "this fire spell handed down from generations, you will most certainly need it." << endl; 
+player.collectFireSpell();
 }
 else if (currentLocation==2){
-cout << "The Cave Troll says: Leave before I KILL YOU!!!" << endl;
+cout << "The Cave Troll says: We have our crowned possesion, leave before I KILL YOU!!!" << endl;
 
 }
 else if (currentLocation==3){
@@ -578,7 +587,7 @@ cout<< "5. Leave"<<endl;
 cin>>shopChoice;
 if(shopChoice==1)
 {
-    player.collectSpell();
+    player.collectIceSpell();
 }
 
 else if(shopChoice==2)
@@ -600,13 +609,10 @@ cout << "There is always a cost:)???" << endl;
 cout << "You Gain: " << endl; 
 cout << "+50 Health" << endl; 
 cout << "+50 Energy" << endl; 
-cout << "+1 Spell" << endl; 
 
 player.setHealth(player.gethealth()+50);
 
 player.setEnergy(100);
-
-player.collectSpell();
 
 player.usedarkmagic();
 
@@ -663,12 +669,12 @@ else if (choice == 8)
         cout << "You must reach the Castle to challenge Farquad." << endl;
     
     }
-    else if (player.getSpells() < 3) 
+    else if (player.getTotalSpells() < 3) 
     {
         cout << "You must collect 3 spells first." << endl;
     }
 
-    else if(player.getArtifacts() < 2) 
+    else if(player.getTotalArtifacts() < 2) 
     {
         cout << "You must collect 2 artifacts first." << endl;
     }

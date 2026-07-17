@@ -5,12 +5,16 @@ using namespace std;
 Player::Player(string playerName) : MainCharacter(playerName, 150) {
 
 attackPower = 10; 
-spells= 0;
-artifacts= 0;
+lightningSpells= 0;
+fireSpells= 0;
+iceSpells= 0;
+dragonartifacts= 0;
+crownartifacts=0;
 energy= 100;
-void setEnergy(int amount);
-void nextDay();
-void loseEnergy(int amount);
+potions = 0;
+energypotions = 0;
+day = 1;
+darkMagic = 0;
 }
 
 int Player::getAttackPower() {
@@ -27,25 +31,56 @@ void Player::displaystats()
     cout << "Health: " << gethealth() << endl;
     cout << "Attack: " << attackPower << endl;
 }
-
-void Player::collectSpell()
+int Player::getIceSpells()
 {
-    spells++;
+    return iceSpells;
 }
 
-void Player::collectArtifact()
+int Player::getFireSpells()
 {
-    artifacts++;
+    return fireSpells;
 }
 
-int Player::getSpells()
+int Player::getLightningSpells()
 {
-    return spells;
+    return lightningSpells;
 }
 
-int Player::getArtifacts()
+int Player::getTotalSpells()
 {
-    return artifacts;
+    return iceSpells + fireSpells + lightningSpells;
+}
+
+int Player::getdragonArtifact()
+{
+    return dragonartifacts;
+}
+void Player::collectIceSpell()
+{
+    iceSpells++;
+}
+void Player::collectFireSpell()
+{
+    fireSpells++;
+
+}
+void Player::collectLightningSpell()
+{
+    lightningSpells++;
+}
+void Player::collectcrownArtifact()
+{
+    crownartifacts++;
+}
+
+int Player::getcrownArtifact()
+{
+    return crownartifacts;
+}
+void Player::collectdragonArtifact()
+{
+    dragonartifacts++; 
+
 }
 void Player::addItem(Item item)
 {
@@ -133,4 +168,26 @@ int Player::getdarkmagic()
 void Player::usedarkmagic()
 {
     darkMagic++;
+}
+
+int Player::getenergyPotions()
+{
+    return energypotions;
+}
+
+void Player::addenergyPotion()
+{
+    energypotions++;
+}
+
+void Player::useenergyPotion()
+{
+    if(energypotions > 0)
+    {
+        energypotions--;
+    }
+}
+int Player::getTotalArtifacts()
+{
+    return dragonartifacts + crownartifacts;
 }

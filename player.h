@@ -9,13 +9,16 @@ using namespace std;
 class Player: public MainCharacter {
 private:
     int attackPower;
-int spells; 
-int artifacts;
+int iceSpells;
+int fireSpells;
+int lightningSpells;
 int energy; 
 int day; 
 int potions; 
 int energypotions; 
 int darkMagic; 
+int dragonartifacts; 
+int crownartifacts; 
 vector<Item> inventory;
 public:
     Player(string playerName);
@@ -25,10 +28,13 @@ int attack();
 
     int getEnergy();
     void setEnergy(int amount);
-int getSpells(); 
-int getArtifacts();
-void collectSpell();
-void collectArtifact();
+void collectIceSpell();
+void collectFireSpell();
+void collectLightningSpell();
+int getIceSpells();
+int getFireSpells();
+int getLightningSpells();
+int getTotalSpells();
 void addItem(Item item);
 void displayInventory();
 void loseEnergy(int amount);
@@ -43,6 +49,11 @@ void useenergyPotion();
 void setHealth(int health);
 int getdarkmagic(); 
 void usedarkmagic();
+void collectdragonArtifact(); 
+void collectcrownArtifact(); 
+int getcrownArtifact(); 
+int getdragonArtifact(); 
+int getTotalArtifacts();
 };
 
 #endif
